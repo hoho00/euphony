@@ -16,6 +16,8 @@ add_executable(
         waveBuilderTest.cpp
         FSKTest.cpp
         packetTest.cpp
+        packetWithFSKTest.cpp
+        packetErrorDetectorTest.cpp
 )
 
 target_link_libraries(${TEST_EUPHONY} PUBLIC euphony gtest)
@@ -32,7 +34,7 @@ execute_process(COMMAND ${ADB} shell getprop ro.product.cpu.abi
         RESULT_VARIABLE ADB_DEVICE_ABI_RESULT)
 
 if( ${ADB_DEVICE_ABI_RESULT} )
-    message(SEND_ERROR "NO ABI OR MORE THAN ONE DEVICE/EMULATOR")
+    message("NO ABI OR MORE THAN ONE DEVICE/EMULATOR")
 else()
     string(STRIP ${ADB_DEVICE_ABI} ADB_DEVICE_ABI)
     if(${ANDROID_ABI} STREQUAL ${ADB_DEVICE_ABI})

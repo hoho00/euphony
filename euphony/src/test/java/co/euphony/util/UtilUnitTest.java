@@ -1,14 +1,14 @@
-package co.euphony.lib.util;
+package co.euphony.util;
 
 import org.junit.Test;
 
-import co.euphony.tx.EuDataEncoder;
-import co.euphony.util.ErrorHandler;
-import co.euphony.util.EuOption;
-import co.euphony.util.PacketErrorDetector;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class UtilUnitTest {
+    /* that would be substituted by packetErrorDetector.cpp on gtest */
+
     @Test
     public void packet_err_detect_isCorrect()
     {
@@ -18,12 +18,12 @@ public class UtilUnitTest {
         assertEquals(PacketErrorDetector.makeCheckSum(   234), 6);
         assertEquals(PacketErrorDetector.makeParallelParity(source), 4);
         assertEquals(PacketErrorDetector.makeParallelParity(234), 10);
-        assertEquals(PacketErrorDetector.verifyCheckSum(source, 14), true);
-        assertEquals(PacketErrorDetector.verifyCheckSum(source, 13), false);
-        assertEquals(PacketErrorDetector.verifyEvenParity(source, 4), true);
-        assertEquals(PacketErrorDetector.verifyEvenParity(source, 5), false);
+        assertTrue(PacketErrorDetector.verifyCheckSum(source, 14));
+        assertFalse(PacketErrorDetector.verifyCheckSum(source, 13));
+        assertTrue(PacketErrorDetector.verifyEvenParity(source, 4));
+        assertFalse(PacketErrorDetector.verifyEvenParity(source, 5));
 
-        assertEquals(PacketErrorDetector.makeErrorDetectionCode(EuDataEncoder.encodeStaticHexCharSource("hello"), EuOption.EncodingType.HEX), "e4");
+        //assertEquals(PacketErrorDetector.makeErrorDetectionCode(EuDataEncoder.encodeStaticHexCharSource("hello"), EuOption.EncodingType.HEX), "e4");
     }
 
     @Test
@@ -43,18 +43,10 @@ public class UtilUnitTest {
     public void option_isCorrect()
     {
         EuOption option = new EuOption();
-        option.setEncodingType(EuOption.EncodingType.ASCII);
-        assertEquals(option.getEncodingType(), EuOption.EncodingType.ASCII);
         option.setEncodingType(EuOption.EncodingType.HEX);
         assertEquals(option.getEncodingType(), EuOption.EncodingType.HEX);
         option.setCommunicationMode(EuOption.CommunicationMode.GENERAL);
         assertEquals(option.getCommunicationMode(), EuOption.CommunicationMode.GENERAL);
-        option.setCommunicationMode(EuOption.CommunicationMode.LIVE);
-        assertEquals(option.getCommunicationMode(), EuOption.CommunicationMode.LIVE);
-
-        EuOption option2 = new EuOption(EuOption.EncodingType.HEX, EuOption.CommunicationMode.LIVE, EuOption.ModulationType.FSK);
-        assertEquals(option2.getEncodingType(), EuOption.EncodingType.HEX);
-        assertEquals(option2.getCommunicationMode(), EuOption.CommunicationMode.LIVE);
     }
 
 }

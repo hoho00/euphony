@@ -140,6 +140,14 @@ public class EuphonyTx {
         if(mEngineHandle != 0) native_setToneOn(mEngineHandle, isToneOn);
     }
 
+    public void setCountToneOn(boolean isToneOn, int count) {
+        if(mEngineHandle != 0) native_setCountToneOn(mEngineHandle, isToneOn, count);
+    }
+
+    public void setCode(String data) {
+        if(mEngineHandle != 0) native_setCode(mEngineHandle, data);
+    }
+
     public void setAudioFrequency(double freq) {
         if(mEngineHandle != 0) native_setAudioFrequency(mEngineHandle, freq);
     }
@@ -192,6 +200,8 @@ public class EuphonyTx {
     private native int native_getStatus(long engineHandle);
     private native void native_setPerformance(long engineHandle, int performanceLevel);
     private native void native_setToneOn(long engineHandle, boolean isToneOn);
+    private native void native_setCountToneOn(long engineHandle, boolean isToneOn, int count);
+    private native void native_setCode(long engineHandle, String data);
     private native void native_setAudioFrequency(long engineHandle, double frequency);
     private native void native_setAudioApi(long engineHandle, int audioApi);
     private native void native_setAudioDeviceId(long engineHandle, int deviceId);
