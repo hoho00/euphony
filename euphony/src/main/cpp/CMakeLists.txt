@@ -26,9 +26,15 @@ set(EUPHONY_SRC
         arms/kiss_fftr.c
         core/source/AudioStreamCallback.cpp
         core/source/ASCIICharset.cpp
+        core/source/UTF8Charset.cpp
+        core/source/UTF16Charset.cpp
         core/source/Base2.cpp
         core/source/Base16.cpp
+        core/source/Base32.cpp
+        core/source/Base64.cpp
         core/source/Base16Exception.cpp
+        core/source/Base32Exception.cpp
+        core/source/Base64Exception.cpp
         core/source/DefaultCharset.cpp
         core/source/EuPIOscillator.cpp
         core/source/EuPIRenderer.cpp
