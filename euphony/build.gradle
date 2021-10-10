@@ -48,6 +48,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    ndkVersion '23.0.7599858'
 }
 
 dependencies {
