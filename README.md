@@ -1,7 +1,7 @@
 <p align='center'><img src='https://github.com/designe/euphony/raw/master/assets/euphony_logo.png' width='400px' /></p>
 <hr style='border-style:inset; border-width:0.5px'/>
 <p align='center'>
-    <a href = 'https://search.maven.org/artifact/co.jbear.lib/euphony/0.7.1.6/aar'><img src='https://maven-badges.herokuapp.com/maven-central/co.jbear.lib/euphony/badge.svg' alt='mavenCentral'/></a> <a href = 'https://coveralls.io/github/designe/euphony?branch=master'><img src='https://coveralls.io/repos/github/designe/euphony/badge.svg?branch=master' alt='Coverage Status'/></a> <a href = 'https://opensource.org/licenses/Apache-2.0'><img src='https://img.shields.io/badge/License-Apache%202.0-blue.svg' alt='License'/></a>
+    <a href = 'https://search.maven.org/artifact/co.euphony.lib/euphony'><img src='https://maven-badges.herokuapp.com/maven-central/co.euphony.lib/euphony/badge.svg' alt='mavenCentral'/></a> <a href = 'https://coveralls.io/github/designe/euphony?branch=master'><img src='https://coveralls.io/repos/github/designe/euphony/badge.svg?branch=master' alt='Coverage Status'/></a> <a href = 'https://opensource.org/licenses/Apache-2.0'><img src='https://img.shields.io/badge/License-Apache%202.0-blue.svg' alt='License'/></a>
 </p>
 
 Acoustic Data Telecommunication Library. This is for Android version.  
@@ -15,7 +15,7 @@ Euphony provides a handiness library designed to communicate with other devices(
 1) build.gradle in app module
 ```gradle
 dependencies {
-    implementation 'euphony.lib:euphony:0.7.1.6'
+    implementation 'co.euphony.lib:euphony:0.8.1.2'
 }
 ```
 
@@ -31,14 +31,14 @@ For more detailed prerequisite, please refer to the link below.
 
 **Transmitter**
 ```java
-EuTxManager mTxManager = new EuTxManager();
-mTxManager.euInitTransmit("Hello, Euphony"); // To generate acoustic data "Hello, Euphony"
-mTxManager.process(-1); // generate sound infinite.
+EuTxManager mTxManager = EuTxManager.getInstance();
+mTxManager.setCode("Hello, Euphony"); // To generate acoustic data "Hello, Euphony"
+mTxManager.play(-1); // generate sound infinite.
 ```
 
 **Receiver**
 ```java
-EuRxManager mRxManager = new EuRxManager();
+EuRxManager mRxManager = EuRxManager.getInstance();
 mRxManager.setAcousticSensor(new AcousticSensor() {
 @Override
     public void notify(String letters) {
@@ -55,6 +55,7 @@ mRxManager.listen();  //Listening Start
 Below links are detail guides.
 - [Getting Started Guide](GETTING_STARTED.md)
 - [How To Build & Unit Test Guide](HOWTOBUILD.md)
+- [Euphony Ui](EUPHONY_UI.md)
 
 ## Architecture
 <p align='center'> <img src='https://github.com/euphony-io/euphony/raw/master/assets/euphony_architecture.png' alt='euphony architecture'> </p>
@@ -70,9 +71,14 @@ Web version is also available now. but only transmitter version.
 - [Euphony Speaker](https://github.com/euphony-io/euphony-speaker) : Euphony Demo to generate sound data.
 - [Sound Helper](https://github.com/euphony-io/sound-helper) : Euphony Demo for patients and assistants in case of an emergency.
 - [Soundless Check-in](https://github.com/euphony-io/soundless-check-in) : Euphony Demo to check in through sound wave.
-- [Here Is My Card](https://github.com/euphony-io/here-is-my-card) : Euphony Demo for sharing buisness cards.
+- [Here Is My Card](https://github.com/euphony-io/here-is-my-card) : Euphony Demo for sharing business cards.
 - [Looking For Job](https://github.com/euphony-io/looking-for-job) : Euphony Demo to send and receive resumes.
 - [Listen My Order](https://github.com/euphony-io/listen-my-order) : Euphony Demo for communicate restaurant menu information.
+- [Wave-In](https://github.com/euphony-io/wave-in-speaker) : COVID-19 Check-in solution using a safe number based on MVVM model.
+- [Wave-In (for store)](https://github.com/euphony-io/wave-in-listener) : COVID-19 Check-in solution for store using a safe number based on MVVM model.
+- [Account Touch](https://github.com/euphony-io/account-touch) : Euphony Demo for sharing account.
+- [Wave Show Card](https://github.com/euphony-io/wave-show-card) : Wave Show Card helps visually impaired people listen to the show card.
+- [Order-With](https://github.com/euphony-io/order-with) : Euphony Demo for taking / making order in restaurant in distance easily.
 
 ## Contributing
 Changes and improvements are more than welcome! Feel Free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`.
